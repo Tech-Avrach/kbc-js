@@ -1,0 +1,202 @@
+
+
+
+<head>
+	<style>
+		.time{
+			position: absolute;
+			margin-left: 760px;
+			margin-top: 310px;
+			height: 80px;
+			width: 80px;
+			background-color: rgb(0, 170, 255);
+			border-radius: 40%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: aliceblue;
+		}
+		.question{
+			position: absolute;
+			margin-left: 400px;
+			margin-top: 230px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: rgb(25, 0, 255);
+			height: 50px;
+			width: 800px;
+			border-radius: 20px;
+			color: aliceblue;
+		}
+		.opt_a,.opt_b,.opt_c,.opt_d{
+			height: 40px;
+			width: 350px;
+			background-color: rgb(127, 223, 255);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 20px;
+		}
+		.opt_a{
+			margin-top: -30px;
+		}
+		.opt_b{
+			margin-left: 450px;
+			margin-top: -70;
+		}
+		.opt_c{
+			margin-top: -20px;
+		}
+		.opt_d{
+			margin-left: 450px;
+			margin-top: -55;
+		}
+		.opt_a_b{
+			margin-top: 280px;
+			height: 50px;
+			width: 800px;
+			margin-left: 400px;
+			
+		}
+		.opt_c_d{
+			margin-top: 0px;
+			height: 50px;
+			width: 800px;
+			margin-left: 400px;
+			
+		}
+		.anser{
+			margin-top: 0px;
+			height: 50px;
+			width: 800px;
+			margin-left: 400px;
+			background-color: rgb(25, 0, 255);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 20px;
+			color: aliceblue;
+		}
+		.made_by{
+			margin-left: 650px;
+			background-color: rgb(37, 130, 216);
+		}
+		.bdy{
+			background-color: rgb(37, 130, 216);
+			
+		}
+
+	</style>
+</head>
+<body id="body" class="bdy">
+<div class="time">
+	<h1 id="tm" class="tm"></h1>
+</div>
+<pre>
+<div class="question">
+	<h2 id="q"></h2>
+</div>
+<div class="opt_a_b">
+	<div class="opt_a">
+		<h3>a) <span class="p1"> </span><input type="radio" onclick="chk('a')" name="r1" class="c1" ></h3>
+	</div>
+    <div class="opt_b">
+	    <h3>b) <span class="p1"> </span><input type="radio" onclick="chk('b')" name="r1" class="c1" ></h3>
+    </div>
+</div>
+<div class="opt_c_d">
+	<div class="opt_c">
+		<h3>c) <span class="p1"> </span><input type="radio" onclick="chk('c')" name="r1" class="c1" ></h3>
+	</div>
+<div class="opt_d">
+	    <h3>d) <span class="p1"> </span><input type="radio" onclick="chk('d')" name="r1" class="c1" ></h3>
+    </div>
+</div>
+<div class="anser" id="anser">
+	<h3 id="answ"></h3>
+</div>
+<div class="made_by"><h2>Develop by : Nikhil Patel</h2></div>
+</pre>
+<script>
+	var tm=0;
+	var t;
+	var data=[
+	{q:'Which god is also known as Gauri Nandan?',a:'Agni',b:'Indra',c:'Hanuman',d:'Ganesha',ans:'d'},
+	{q:'Which city is known as Pink City in India?',a:'Banglor',b:'Maysor',c:'Jaipur',d:'kochi',ans:'c'},
+	{q:'Who wrote India National Anthem?',a:'Rabindranath Tagore',b:'Lal Bahadur Shastri',c:'Chetan Bhagat',d:'RK Narayan',ans:'a'},
+	{q:'When is the National Hindi Diwas celebrated?',a:'13 September',b:'14 September',c:'14 July',d:'15 August',ans:'b'},
+	{q:'How many states are there in India?',a:'28',b:'29',c:'27',d:'31',ans:'a'},
+	{q:'What s the heaviest organ in the human body?',a:'Brain',b:'Liver',c:'skin',d:'Heart',ans:'b'},
+	{q:'Which country is the footballer Cristiano Ronaldo from?',a:'Spain',b:'Brazil',c:'Uruguay',d:'Portugal',ans:'d'},
+	{q:'How many elements are there on the periodic table?',a:'57',b:'64',c:'118',d:'98',ans:'c'},
+	{q:'National Tree of India?',a:'Neem Tree',b:'Mango Tree',c:'Banyan Tree',d:'Sandal Tree',ans:'c'},
+	{q:'Who is richest woman in the India',a:'Savitri Jindal',b:'Falguni Nayar',c:'Roshni Nadar Malhotra',d:'Nita Ambani',ans:'a'}
+	];
+	var result=0;
+	function show()
+	{
+	t=Math.random();
+	t=parseInt(t*10);
+	document.getElementById('q').innerText=data[t]['q'];
+	document.getElementsByClassName('p1')[0].innerHTML=data[t]['a'];
+	document.getElementsByClassName('p1')[1].innerHTML=data[t]['b'];
+	document.getElementsByClassName('p1')[2].innerHTML=data[t]['c'];
+	document.getElementsByClassName('p1')[3].innerHTML=data[t]['d'];
+	document.getElementById('answ').innerText=' '
+	document.getElementById('anser').style.backgroundColor='blue'
+	}
+	show();
+	function chk(ch)
+	{
+		if(data[t]['ans']==ch)
+		{
+			result++;
+			document.getElementById('answ').innerText='Yes '+ data[t][ch]+' is correct answer'
+			document.getElementById('anser').style.backgroundColor='green'
+			tm=-2
+		setTimeout(function(){
+			for(var i=0;i<4;i++)
+			{
+				document.getElementsByClassName('c1')[i].checked=false;
+			}
+		},2000)
+		}
+		else
+		{
+			//alert(result);
+			var s=data[t]['ans']
+			document.getElementById('anser').style.backgroundColor='red'
+			document.getElementById('answ').innerText='NO '+ data[t][s]+' is correct answer';
+			setTimeout(function(){
+			    alert('your score is : '+result)
+				//alert('Game Over!!')
+			},3000)
+			//alert('NO '+ data[t][s]+' is correct answer')
+			//alert('your score is : '+result)
+			//window.location.href="file:///Users/nikhilpatel/Downloads/programs.html";
+            setTimeout(function(){
+				document.getElementById('body').innerText='game over'
+			},2000)
+		}
+	}
+	var t1=setInterval(function() 
+	{
+		if (tm>-1)
+		{
+			document.getElementById('tm').innerText=tm;
+		}
+		tm++;
+		if (tm==11)
+		{
+			tm=0;
+			
+		}
+		if(tm==1)
+			{
+				show();
+			}
+		
+	},1000)
+</script>
+</body>
